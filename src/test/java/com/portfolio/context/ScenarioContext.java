@@ -11,5 +11,6 @@ public class ScenarioContext {
     String email;
     String password;
     String authenticationToken;
-    String loginToken;
+    String sessionToken;
+    String contactId;
 }

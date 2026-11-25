@@ -18,7 +18,7 @@ public class TestHooks {
     HttpResponse<String> response;
     HttpClient client = HttpClient.newHttpClient();
 
-    @After("@registration")
+    @After("@registration or @contacts")
     public void deleteUser() throws IOException, InterruptedException {
         if(context.getAuthenticationToken() != null){
             String targetUrl = baseUrl + "users/me";

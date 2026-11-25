@@ -98,7 +98,7 @@ public class RegistrationStepLibrary {
        }
     }
 
-    public void postUserLoginRequest(UserLoginRequest userLoginRequest) throws IOException, InterruptedException {
+    public CreateUserResponse postUserLoginRequest(UserLoginRequest userLoginRequest) throws IOException, InterruptedException {
 
         ObjectMapper mapper = new ObjectMapper();
         String targetUrl = baseUrl + "users/login";
@@ -110,7 +110,9 @@ public class RegistrationStepLibrary {
                 .build();
 
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CreateUserResponse actualResponse = mapper.readValue(response.body(), CreateUserResponse.class);
         System.out.println("Response Body: " + response.body());
+        return actualResponse;
     }
 
     public String extractToken() throws JsonProcessingException {
